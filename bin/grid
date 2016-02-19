@@ -57,7 +57,7 @@ install_all() {
 }
 
 install_samza() {
-  mkdir -p "$DEPLOY_ROOT_DIR"
+  mkdir -p "$DEPLOY_ROOT_DIR"/samza
   if [ -d "$DOWNLOAD_CACHE_DIR/samza/.git" ]; then
     pushd "$DOWNLOAD_CACHE_DIR/samza"
     git fetch origin
