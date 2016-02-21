@@ -164,6 +164,13 @@
             <artifactId>hadoop-yarn-common</artifactId>
             <version>${hadoop.version}</version>
         </dependency>
+        <!-- test dependencies -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.9.10</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -199,6 +206,16 @@
                         </descriptors>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>default-deploy</id>
+                            <phase>none</phase>
+                        </execution>
+                    </executions>
+                </plugin>
             </plugins>
         </pluginManagement>
 
@@ -221,8 +238,8 @@
                 <version>1.4.0</version>
                 <executions>
                     <execution>
-                        <id>unzip-package</id>
-                        <phase>pre-integration-test</phase>
+                        <id>default-install</id>
+                        <phase>install</phase>
                         <configuration>
                             <executable>tar</executable>
                             <arguments>
@@ -237,27 +254,13 @@
                         </goals>
                     </execution>
                     <execution>
-                        <id>grid-start</id>
-                        <phase>pre-integration-test</phase>
-                        <configuration>
-                            <executable>${project.basedir}/bin/grid</executable>
-                            <arguments>
-                                <argument>start</argument>
-                                <argument>all</argument>
-                            </arguments>
-                        </configuration>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>run-job</id>
-                        <phase>integration-test</phase>
+                        <id>default-deploy</id>
+                        <phase>deploy</phase>
                         <configuration>
                             <executable>${samza.deploy.path}/bin/run-job.sh</executable>
                             <arguments>
                                 <argument>--config-factory=org.apache.samza.config.factories.PropertiesConfigFactory</argument>
-                                <argument>--config-path=file://${samza.deploy.path}/config/wikipedia-feed.properties</argument>
+                                <argument>--config-path=file://${samza.deploy.path}/config/keylogger.properties</argument>
                             </arguments>
                         </configuration>
                         <goals>
@@ -268,95 +271,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <!-- CDH compatible build: mvn clean package -Denv=cdh5.4.0 -->
-        <profile>
-            <id>cdh5.4.0</id>
-            <activation>
-                <property>
-                    <name>env</name>
-                    <value>cdh5.4.0</value>
-                </property>
-            </activation>
-            <properties>
-                <hadoop.version>2.6.0-cdh5.4.0</hadoop.version>
-            </properties>
-        </profile>
-
-        <profile>
-            <id>bootstrap</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <version>1.4.0</version>
-                        <executions>
-                            <execution>
-                                <id>grid-bootstrap</id>
-                                <phase>initialize</phase>
-                                <configuration>
-                                    <executable>${project.basedir}/bin/grid</executable>
-                                    <arguments>
-                                        <argument>bootstrap</argument>
-                                    </arguments>
-                                </configuration>
-                                <goals>
-                                    <goal>exec</goal>
-                                </goals>
-                            </execution>
-                            <execution>
-                                <id>grid-start</id>
-                                <phase>none</phase>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>skipTests</id>
-            <activation>
-                <property>
-                    <name>skipTests</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-assembly-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>assemble-package</id>
-                                <phase>none</phase>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>unzip-package</id>
-                                <phase>none</phase>
-                            </execution>
-                            <execution>
-                                <id>grid-start</id>
-                                <phase>none</phase>
-                            </execution>
-                            <execution>
-                                <id>run-job</id>
-                                <phase>none</phase>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>
