@@ -17,8 +17,8 @@ public class KeyMaker extends BlockingEnvelopeMap {
 	private Timer timer;
 
 	public KeyMaker(String systemName) {
-		this.streams = new ArrayList<>();
 		this.systemName = systemName;
+		this.streams = new ArrayList<>();
 	}
 
 	@Override
@@ -31,6 +31,7 @@ public class KeyMaker extends BlockingEnvelopeMap {
 	public void start() {
 		timer = new Timer();
 		final KeyMaker that = this;
+		// every second
 		timer.scheduleAtFixedRate(new TimerTask() {
 			@Override
 			public void run() {

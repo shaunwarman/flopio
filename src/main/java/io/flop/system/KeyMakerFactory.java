@@ -10,6 +10,7 @@ import org.apache.samza.system.SystemProducer;
 import org.apache.samza.util.SinglePartitionWithoutOffsetsSystemAdmin;
 
 public class KeyMakerFactory implements SystemFactory {
+
   @Override
   public SystemAdmin getAdmin(String systemName, Config config) {
     return new SinglePartitionWithoutOffsetsSystemAdmin();

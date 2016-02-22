@@ -14,6 +14,6 @@ public class KeyLogger implements StreamTask {
 	@Override
 	public void process(IncomingMessageEnvelope envelope, MessageCollector collector, TaskCoordinator coordinator) {
 		Object message = envelope.getMessage();
-		logger.info("Received key: {}", message);
+		logger.info("Key <-- {}", message);
 	}
 }
