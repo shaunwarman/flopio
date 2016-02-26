@@ -15,6 +15,7 @@
     <url>http://flop.io</url>
 
     <modules>
+        <module>flopio-maven-plugin</module>
         <module>keylogger</module>
     </modules>
 

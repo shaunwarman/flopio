@@ -134,57 +134,29 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.3</version>
-                <configuration>
-                    <descriptors>
-                        <descriptor>${project.basedir}/src/main/assembly/src.xml</descriptor>
-                    </descriptors>
-                </configuration>
+                <groupId>io.flop.maven</groupId>
+                <artifactId>flopio-maven-plugin</artifactId>
+                <version>${project.version}</version>
                 <executions>
                     <execution>
-                        <id>assemble-package</id>
+                        <id>flopio-package</id>
                         <phase>package</phase>
                         <goals>
-                            <goal>single</goal>
+                            <goal>package</goal>
                         </goals>
                     </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.4.0</version>
-                <executions>
                     <execution>
-                        <id>default-install</id>
+                        <id>flopio-install</id>
                         <phase>install</phase>
-                        <configuration>
-                            <executable>tar</executable>
-                            <arguments>
-                                <argument>xf</argument>
-                                <argument>${project.build.directory}/${project.artifactId}-${project.version}-dist.tar.gz</argument>
-                                <argument>-C</argument>
-                                <argument>${samza.deploy.path}</argument>
-                            </arguments>
-                        </configuration>
                         <goals>
-                            <goal>exec</goal>
+                            <goal>install</goal>
                         </goals>
                     </execution>
                     <execution>
                         <id>flopio-deploy</id>
                         <phase>deploy</phase>
-                        <configuration>
-                            <executable>${samza.deploy.path}/bin/run-job.sh</executable>
-                            <arguments>
-                                <argument>--config-factory=org.apache.samza.config.factories.PropertiesConfigFactory</argument>
-                                <argument>--config-path=file://${samza.deploy.path}/config/flopio.properties</argument>
-                            </arguments>
-                        </configuration>
                         <goals>
-                            <goal>exec</goal>
+                            <goal>deploy</goal>
                         </goals>
                     </execution>
                 </executions>
