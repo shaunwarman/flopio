@@ -11,10 +11,11 @@
     <artifactId>flopio</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>FlopIO Reactor</name>
+    <name>Reactor</name>
     <url>http://flop.io</url>
 
     <modules>
+        <module>api</module>
         <module>flopio-maven-plugin</module>
         <module>keylogger</module>
     </modules>

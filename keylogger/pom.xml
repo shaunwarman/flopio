@@ -12,107 +12,17 @@
 
     <groupId>io.flop.task</groupId>
     <artifactId>keylogger</artifactId>
-    <name>KeyLogger Task</name>
+    <name>KeyLogger</name>
 
     <properties>
-        <hadoop.version>2.6.1</hadoop.version>
         <samza.deploy.path>${project.basedir}/deploy/samza</samza.deploy.path>
-        <samza.version>0.10.0</samza.version>
     </properties>
 
     <dependencies>
-        <!-- 3rd party dependencies -->
         <dependency>
-            <groupId>org.apache.samza</groupId>
-            <artifactId>samza-api</artifactId>
-            <version>${samza.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.samza</groupId>
-            <artifactId>samza-core_2.10</artifactId>
-            <version>${samza.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.samza</groupId>
-            <artifactId>samza-log4j</artifactId>
-            <version>${samza.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.samza</groupId>
-            <artifactId>samza-shell</artifactId>
-            <classifier>dist</classifier>
-            <type>tgz</type>
-            <version>${samza.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.samza</groupId>
-            <artifactId>samza-yarn_2.10</artifactId>
-            <version>${samza.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.samza</groupId>
-            <artifactId>samza-kv_2.10</artifactId>
-            <version>${samza.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.samza</groupId>
-            <artifactId>samza-kv-rocksdb_2.10</artifactId>
-            <version>${samza.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.samza</groupId>
-            <artifactId>samza-kafka_2.10</artifactId>
-            <version>${samza.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka_2.10</artifactId>
-            <version>0.8.2.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.schwering</groupId>
-            <artifactId>irclib</artifactId>
-            <version>1.10</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-jaxrs</artifactId>
-            <version>1.8.5</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-annotations</artifactId>
-            <version>${hadoop.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-auth</artifactId>
-            <version>${hadoop.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-common</artifactId>
-            <version>${hadoop.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-hdfs</artifactId>
-            <version>${hadoop.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-yarn-api</artifactId>
-            <version>${hadoop.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-yarn-client</artifactId>
-            <version>${hadoop.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-yarn-common</artifactId>
-            <version>${hadoop.version}</version>
+            <groupId>io.flop</groupId>
+            <artifactId>api</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 
