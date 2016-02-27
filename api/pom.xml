@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>flopio</artifactId>
         <groupId>io.flop</groupId>
+        <artifactId>flopio</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>..</relativePath>
     </parent>
