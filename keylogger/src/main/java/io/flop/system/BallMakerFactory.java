@@ -9,7 +9,7 @@ import org.apache.samza.system.SystemFactory;
 import org.apache.samza.system.SystemProducer;
 import org.apache.samza.util.SinglePartitionWithoutOffsetsSystemAdmin;
 
-public class KeyMakerFactory implements SystemFactory {
+public class BallMakerFactory implements SystemFactory {
 
   @Override
   public SystemAdmin getAdmin(String systemName, Config config) {
@@ -18,7 +18,7 @@ public class KeyMakerFactory implements SystemFactory {
 
   @Override
   public SystemConsumer getConsumer(String systemName, Config config, MetricsRegistry registry) {
-    return new KeyMaker(systemName);
+    return new BallMaker(systemName);
   }
 
   @Override

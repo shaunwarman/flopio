@@ -33,7 +33,7 @@ public class PackageMojo extends AbstractMojo {
 				),
 				goal("single"),
 				configuration(
-						element(name("descriptors"), "${project.basedir}/src/main/assembly/src.xml")
+						element(name("descriptors"), "${project.basedir}/src/main/resources/assembly.xml")
 				),
 				executionEnvironment(
 						mavenProject,
